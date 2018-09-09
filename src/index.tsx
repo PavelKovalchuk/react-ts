@@ -3,6 +3,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import withCount from "./hoc/withCount";
 import DisplayCount from "./hoc/displayCount";
+import WindowQueries from "./renderProps/windowQueries";
+import DisplaySize from "./renderProps/displaySize";
 
 // необходимо описывать интерфейсы для props и state компонентов
 interface IAppProps {
@@ -14,7 +16,7 @@ const Counter = withCount(DisplayCount);
  * title - свойство напрямую передается компоненту DisplayCount
  * increment - свойство используется в компоненте высшего порядка
  */
-const App = () => <Counter title="High Order Component" increment={1} /> ;
+// const App = () => <Counter title="High Order Component" increment={1} /> ;
 
 // функциональный компонент
 // const App = (props: IAppProps) => <h1>{props.title}</h1>;
@@ -24,8 +26,21 @@ const App = () => <Counter title="High Order Component" increment={1} /> ;
 // const load = () => import(/* webpackChunkName: 'lazy-component' */'./lazy/lazyComponent');
 // const AppLazy = ({title}: IAppProps) => <LazyLoad load={load} />;
 
+
+const App = (
+    <WindowQueries>
+        {({ width, height }) => <DisplaySize title="render children" width={width} height={height} />}
+    </WindowQueries>
+);
+/*
+<WindowQueries
+    render={
+        ({ width, height }) => <DisplaySize title="render property" width={width} height={height} />
+    }
+/>*/
+
 ReactDOM.render(
     // <App title="Hello, my React!" />,
-    App(),
+    App,
     document.getElementById('root')
 );
