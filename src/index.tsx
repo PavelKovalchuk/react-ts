@@ -19,6 +19,11 @@ const App = () => <Counter title="High Order Component" increment={1} /> ;
 // функциональный компонент
 // const App = (props: IAppProps) => <h1>{props.title}</h1>;
 
+// webpackChunkName - имя для итогового бандла с динамическим модулем
+// chunkFilename: '[name].bundle.js' создаст нам lazy-component.bundle.js
+// const load = () => import(/* webpackChunkName: 'lazy-component' */'./lazy/lazyComponent');
+// const AppLazy = ({title}: IAppProps) => <LazyLoad load={load} />;
+
 ReactDOM.render(
     // <App title="Hello, my React!" />,
     App(),

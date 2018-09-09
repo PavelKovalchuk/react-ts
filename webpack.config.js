@@ -17,7 +17,8 @@ const config = {
 
     output: {
         path: paths.dist,  // путь для результатов сборки
-        filename: '[name].bundle.js'  // название итогового бандла, получится dist/app.bundle.js
+        filename: '[name].bundle.js', // название итогового бандла, получится dist/app.bundle.js
+        chunkFilename: '[name].bundle.js' // динамически загружаемые модули считаются chunk'ами
     },
 
     resolve: {
